@@ -10,6 +10,8 @@ Convert CT24 Czech TV to rss feed
 Use cases
 ============
 Publish web videos to Playstation 3 using PS3MediaServer dlna.
+http://code.google.com/p/ps3mediaserver/
+
 
 Example urls:
 http://localhost:8080/areenafeed/yleareena.jsp?quality=hi&medialink=asxrefmms&media=video&keyword=Reinikainen
@@ -20,7 +22,8 @@ http://localhost:8080/areenafeed/vimeo.jsp?title=Documentary+films&quality=lo&ur
 http://localhost:8080/areenafeed/areenafeed/theonion.jsp?title=Most+Recent&url=content/ajax/onn/list/8/0/mostrecent
 http://localhost:8080/areenafeed/areenafeed/ct24cz.jsp?medialink=asxrefmms&title=Programmes&maxitems=5&url=vysilani/?streamtype=WM2
 
-Offline example rss feeds (obsolete, do not use)
+
+Offline example rss feeds (obsolete, DO NOT USE, NOT IMPLEMENTED)
 ==============================
 Here is three offline rss documents after a conversion.
 	rss_video.xml
@@ -29,7 +32,7 @@ You can use any website source and create similar rss documents.
 PS3MS should read it and publish content to Playstation 3 XMB menu.
 
 
-Create rss documents offline (obsolete, do not use)
+Create rss documents offline (obsolete, DO NOT USE, NOT IMPLEMENTED)
 ==============================
 Use commandline to create offline documents.
 
@@ -56,4 +59,5 @@ Deploy areenafeed.war package to jsp engine or use a commandline converter.
 User guide and documentation
 ================================
 See webapp/index.html for more information
-
+See webapp/installation.txt for more Tomcat6 installation
+See http://code.google.com/p/ps3mediaserver/ for PS3MS mediaserver
