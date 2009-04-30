@@ -8,6 +8,7 @@ public class AppContext {
 	private static AppContextI instance;
 	
 	public static synchronized void setInstance(AppContextI ctx) {
+		if (instance != null) return; // do only once
 		instance = ctx;
 	}
 	
