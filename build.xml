@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="build" basedir=".">
+
+	<property name="build.name" value="areenafeed" />
+	<property name="classdir" value="./classes" />
+	<property name="source" value="./src" />
+	<property name="version" value="1.0"/>
+
+	<path id="libs">
+	   <pathelement location="/eclipseLibraries/servlet/servlet-api.jar" />
+	</path>
+
+
+	<tstamp>
+	   <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+	</tstamp>
+
+	<target name="updatemanifest" description="Update manifest">
+	   <buildnumber file="build.num"/>
+
+	   <copy file="${source}/META-INF/MANIFEST.MF" 
+	      todir="${classdir}/META-INF/" overwrite="true" preservelastmodified="true"
+	   />
+
+	   <manifest file="${classdir}/META-INF/MANIFEST.MF" mode="update">
+	      <attribute name="Implementation-Version" value="${version}.${build.number} (${TODAY})"/>
+	   </manifest>
+	</target>
+
+	<target name="clean" description="Clean compiled classes">
+		<delete dir="${classdir}" />
+	</target>
+
+	<target name="compile" depends="clean" description="Compile classes">
+		<mkdir dir="${classdir}"/>
+		<javac srcdir="${source}" destdir="${classdir}" target="1.6" source="1.6" encoding="ISO-8859-1" 
+			debug="true" debuglevel="lines,source"
+			excludes="" >
+			<classpath refid="libs" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="updatemanifest" description="Create a jar file">
+		<jar basedir="${classdir}"
+			manifest="${classdir}/META-INF/MANIFEST.MF" 
+			jarfile="./webapp/WEB-INF/lib/${build.name}.jar"
+		/>
+	</target>
+
+	<target name="build" depends="compile,jar" description="Create a war file">
+		<zip destfile="${build.name}.war"
+			basedir="./webapp/"
+			excludes="
+				**/CVS*, **/.svn*
+				"
+		/>
+	</target>
+
+</project>
