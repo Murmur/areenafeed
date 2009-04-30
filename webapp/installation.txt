@@ -1,0 +1,81 @@
+Tomcat 6.x installation
++ JSTL taglib v1.1.2
++ areenafeed.war web application
+========================================
+
+* download Tomcat 6.0.18 or newer
+  http://tomcat.apache.org/download-60.cgi
+  http://mirror.eunet.fi/apache/tomcat/tomcat-6/v6.0.18/bin/apache-tomcat-6.0.18.zip
+
+
+* download JSTL Standard Taglib 1.1.2
+  http://jakarta.apache.org/site/downloads/downloads_taglibs-standard.cgi
+  http://mirror.eunet.fi/apache/jakarta/taglibs/standard/binaries/jakarta-taglibs-standard-1.1.2.zip
+
+
+* Unzip apache-tomcat-6.0.18.zip to c:\tomcat folder,
+  archive has the "apache-tomcat-6.0.18" root folder so you should get
+  c:\tomcat\apache-tomcat-6.0.18 folder.
+  
+
+* Edit {tomcat}\bin\catalina.bat script, define JRE_HOME variable,
+  point variable to JRE installation folder. This tells Tomcat which
+  Java virtual machine instance to use. 
+
+  Using this method you don't need to define a global system environment 
+  variables or in case a system variable is not the one you want Tomcat to use.
+
+	...
+	rem $Id: catalina.bat 656834 2008-05-15 21:04:04Z markt $
+	rem ---------------------------------------------------------------------------
+
+	SET JRE_HOME=C:\Program Files\Java\jre6
+
+	rem Guess CATALINA_HOME if not defined
+	set CURRENT_DIR=%cd%
+	...
+
+
+* edit {tomcat}\conf\server.xml file
+  Add useBodyEncodingForURI="true" attribute to 8080 connector.
+  This fixes charset problems in GET http requests url parameters
+  and is more aligned to how web browsers work. Default Tomcat
+  mode may not work properly for GET html form requests.
+    	...
+	<Connector port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" 
+               redirectPort="8443" 
+		useBodyEncodingForURI="true"
+	/>
+	...
+
+
+* Test tomcat, start and stop
+  start tomcat: {tomcat}\bin\startup.bat
+  open webpage: http://localhost:8080/
+  stop tomcat : {tomcat}\bin\shutdown.bat
+
+
+* Delete unnecessary Tomcat examples and documentation files
+  delete {tomcat}\webapps\examples
+  delete {tomcat}\webapps\docs
+
+
+* Open jakarta-taglibs-standard-1.1.2.zip archive
+  Copy jstl.jar to {tomcat}\lib folder
+  Copy standard.jar to {tomcat}\lib folder
+
+
+* Start tomcat
+  {tomcat}\bin\startup.bat
+
+
+* Open areenafeed.zip archive and deploy .war web application
+  copy areenafeed.war to {tomcat}\webapps folder
+
+  open webpage: http://localhost:8080/areenafeed/
+  open webpage: http://localhost:8080/areenafeed/version.jsp
+  open webpage: http://localhost:8080/areenafeed/youtube.jsp?title=Playstation+channel&desc=Official+Playstation+videos&url=profile?user=PlayStation%26view=videos
+
+
+Tomcat and web application is ready.
