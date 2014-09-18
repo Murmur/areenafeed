@@ -23,35 +23,25 @@ http://localhost:8080/areenafeed/areenafeed/theonion.jsp?title=Most+Recent&url=c
 http://localhost:8080/areenafeed/areenafeed/ct24cz.jsp?medialink=asxrefmms&title=Programmes&maxitems=5&url=vysilani/?streamtype=WM2
 
 
-Offline example rss feeds (obsolete, DO NOT USE, NOT IMPLEMENTED)
-==============================
-Here is three offline rss documents after a conversion.
-	rss_video.xml
-
-You can use any website source and create similar rss documents.
-PS3MS should read it and publish content to Playstation 3 XMB menu.
-
-
-Create rss documents offline (obsolete, DO NOT USE, NOT IMPLEMENTED)
+Create rss documents offline
 ==============================
 Use commandline to create offline documents.
+see createSimpleDocument.bat example script.
 
-@REM Create rss-simple documents
-set keyword=
-set keywordenc=t%%C3%%A4n%%C3%%A4%%C3%%A4n+otsikoissa
-C:\projects\areenafeed>java -cp ./webapp/WEB-INF/lib/areenafeed.jar fi.mbnet.akini.areenafeed.AreenaConverterMain "keyword=%keyword%" "keywordenc=%keywordenc%"  quality=hi medialink=asxrefmms media=video  1>rss-simple1.xml
 
-set keyword=Urheiluruutu
-set keywordenc=
-C:\projects\areenafeed>java -cp ./webapp/WEB-INF/lib/areenafeed.jar fi.mbnet.akini.areenafeed.AreenaConverterMain "keyword=%keyword%" "keywordenc=%keywordenc%"  quality=hi medialink=asxrefmms media=video  1>rss-simple2.xml
+Use javascript
+==============================
+Use commandline to run javascript script to parse adhoc output format.
+see callJavascript.bat example script.
+
 
 
 Installation
 =================
 * Tomcat, Jetty or other jsp engine
 * JSTL v1.1 tag library
-* areenafeed.war web application archive
 * Java JRE6 virtual machine
+* areenafeed.war web application archive
 
 Deploy areenafeed.war package to jsp engine or use a commandline converter.
 

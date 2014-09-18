@@ -25,6 +25,7 @@ table.compact td { margin: 0px; padding: 1px 3px 1px 3px;                   bord
 
 <body>
 <p style="font-size:small">
+Updated: 2009-07-05: updated Yle Areena parser, added offline rss writer<br/>
 Updated: 2009-04-25: updated vimeo.com parser<br/>
 Updated: 2009-03-30: fixed a quote bug in reply-rss.jsp page<br/>
 Updated: 2009-03-22: added The Onion, ČT24<br/>
@@ -275,33 +276,13 @@ Use this helper tool to convert search keyword to utf-8 url encoded string.<br/>
 <span style="display:inline-block;width:70px">Encoded</span> <input type="text" name="field2" id="field2" value="" size="30" />
 </p>
 
-<!--
-<h3>Commandline converter</h3>
-<p>
-RSS-feed documents can be created offline if you don't have Tomcat server available. PS3MS can use
-either a http:// or file:// sources.<br/>
-
-<pre>
-@REM Create rss-simple documents
-set keyword=
-set keywordenc=t%%C3%%A4n%%C3%%A4%%C3%%A4n+otsikoissa
-C:\projects\areenafeed>java -cp ./webapp/WEB-INF/lib/areenafeed.jar fi.mbnet.akini.areenafeed.AreenaConverterMain "keyword=%keyword%" "keywordenc=%keywordenc%"  quality=hi medialink=asxrefmms media=video  1>rss-simple1.xml
-
-set keyword=Urheiluruutu
-set keywordenc=
-C:\projects\areenafeed>java -cp ./webapp/WEB-INF/lib/areenafeed.jar fi.mbnet.akini.areenafeed.AreenaConverterMain "keyword=%keyword%" "keywordenc=%keywordenc%"  quality=hi medialink=asxrefmms media=video  1>rss-simple2.xml
-</pre>
-</p>
--->
-
-
 <h3>Installation, Requirements</h3>
 <p>
 <ul>
 <li><a href="http://tomcat.apache.org/download-60.cgi">Tomcat server</a> or <a href="http://www.mortbay.org/jetty/">Jetty server</a></li>
 <li><a href="http://jakarta.apache.org/taglibs/doc/standard-doc/intro.html">JSTL Standard Tag Library 1.1</a>
-<li><a href="areenafeed.zip">areenafeed.zip</a> package contains areenafeed.war web application
 <li><a href="http://java.sun.com/javase/downloads/?intcmp=1281">Java JRE6</a> virtual machine
+<li><a href="areenafeed.zip">areenafeed.zip</a> package contains areenafeed.war web application
 </ul>
 
 See <a href="installation.txt">Installation.txt</a> for detailed installation steps to setup
